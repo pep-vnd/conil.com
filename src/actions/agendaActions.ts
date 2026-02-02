@@ -8,10 +8,11 @@ export async function createEvent(formData: FormData) {
   const date = formData.get('date');
   const location = formData.get('location');
   const category = formData.get('category');
+  const image_url = formData.get('image_url'); // <--- Nueva pieza
 
   await sql`
-    INSERT INTO events (title, description, date, location, category)
-    VALUES (${title as string}, ${description as string}, ${date as string}, ${location as string}, ${category as string})
+    INSERT INTO events (title, description, date, location, category, image_url)
+    VALUES (${title as string}, ${description as string}, ${date as string}, ${location as string}, ${category as string}, ${image_url as string})
   `;
 
   revalidatePath('/agenda');

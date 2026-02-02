@@ -18,6 +18,18 @@ export default async function AgendaPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {events.map((event) => (
               <div key={event.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow border border-gray-100">
+                
+                {/* ESTO AÑADE LA PORTADA SI EXISTE LA URL */}
+                {event.image_url && (
+                  <div className="relative h-48 w-full">
+                    <img 
+                      src={event.image_url} 
+                      alt={event.title} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-4">
                     <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded uppercase">
