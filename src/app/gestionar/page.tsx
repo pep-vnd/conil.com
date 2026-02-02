@@ -16,62 +16,50 @@ export default async function AgendaPublica() {
           <img src={destacado.image_url} className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Banner" />
         ) : (
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-slate-900 opacity-80" />
-        )}
+import { sql } from '@vercel/postgres';
+import { createEvent, deleteEvent } from '@/actions/agendaActions';
+
+export default async function PanelGestion() {
+  const { rows: events } = await sql`SELECT * FROM events ORDER BY date DESC`;
+
+  return (
+    <div className="min-h-screen bg-gray-100 p-8 text-black">
+      <div className="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+        <h1 className="text-2xl font-black mb-6 border-b pb-4">Panel de Gestión - Conil.com</h1>
         
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-4 tracking-tighter">
-            AGENDA CONIL
-          </h1>
-          <p className="text-xl text-blue-200 max-w-2xl font-light">
-            {destacado ? `Destacado hoy: ${destacado.title}` : "Descubre los mejores eventos, fiestas y cultura en Conil."}
-          </p>
-          {destacado && (
-            <div className="mt-6 bg-blue-600 text-white px-6 py-2 rounded-full font-bold animate-pulse">
-              ¡NUEVA ACTIVIDAD!
+        {/* FORMULARIO PARA AÑADIR */}
+        <form action={createEvent} className="space-y-4 mb-10 bg-blue-50 p-6 rounded-xl border border-blue-100">
+          <h2 className="font-bold text-blue-800">Añadir Actividad</h2>
+          <div className="grid grid-cols-2 gap-4">
+            <input name="title" placeholder="Título" className="p-2 border rounded" required />
+            <input name="image_url" placeholder="URL de la imagen (JPG/PNG)" className="p-2 border rounded" />
+            <input name="date" type="datetime-local" className="p-2 border rounded" required />
+            <input name="location" placeholder="Lugar" className="p-2 border rounded" required />
+          </div>
+          <textarea name="description" placeholder="Descripción corta" className="w-full p-2 border rounded" />
+          <select name="category" className="w-full p-2 border rounded">
+            <option value="Fiesta">Fiesta / DJ</option>
+            <option value="Gastronomía">Gastronomía</option>
+            <option value="Cultura">Cultura</option>
+          </select>
+          <button type="submit" className="w-full bg-blue-600 text-white p-3 rounded-lg font-bold hover:bg-blue-700">
+            Publicar en la Agenda
+          </button>
+        </form>
+
+        {/* LISTA PARA BORRAR */}
+        <h2 className="font-bold mb-4">Actividades Publicadas</h2>
+        <div className="space-y-2">
+          {events.map((event) => (
+            <div key={event.id} className="flex justify-between items-center p-3 bg-gray-50 rounded border">
+              <span>{event.title}</span>
+              <form action={async () => { 'use server'; await deleteEvent(event.id); }}>
+                <button className="text-red-500 font-bold px-3 py-1 hover:bg-red-50">Eliminar</button>
+              </form>
             </div>
-          )}
+          ))}
         </div>
-      </section>
-
-      {/* LISTADO DE ACTIVIDADES */}
-      <section className="max-w-7xl mx-auto py-16 px-6">
-        <h2 className="text-3xl font-bold text-slate-900 mb-10 border-b-4 border-blue-500 inline-block">
-          Próximas Citas
-        </h2>
-
-        {events.length === 0 ? (
-          <div className="text-center py-20 bg-gray-50 rounded-3xl border-2 border-dashed">
-            <p className="text-gray-400 text-xl font-medium">Estamos preparando nuevas sorpresas para Conil...</p>
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {events.map((event) => (
-              <div key={event.id} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                <div className="relative h-56 overflow-hidden">
-                  <img src={event.image_url || "/api/placeholder/400/320"} alt={event.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-[10px] font-black text-blue-600 uppercase">
-                    {event.category}
-                  </div>
-                </div>
-                <div className="p-8">
-                  <span className="text-blue-500 font-bold text-sm tracking-widest uppercase">
-                    {new Date(event.date).toLocaleDateString('es-ES', { day: '2-digit', month: 'long' })}
-                  </span>
-                  <h3 className="text-2xl font-bold text-slate-900 mt-2 group-hover:text-blue-600 transition-colors">
-                    {event.title}
-                  </h3>
-                  <p className="text-slate-500 mt-3 text-sm leading-relaxed line-clamp-2">
-                    {event.description}
-                  </p>
-                  <div className="mt-6 pt-6 border-t border-gray-100 flex items-center text-slate-400 text-xs italic">
-                    <span className="text-blue-500 mr-2">📍</span> {event.location}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
+      </div>
     </div>
   );
 }
