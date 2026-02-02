@@ -1,55 +1,38 @@
 import { sql } from '@vercel/postgres';
+import { createEvent, deleteEvent } from '@/actions/agendaActions';
 
-export default async function AgendaPage() {
-  // Traemos los eventos de la base de datos ordenados por fecha
-  const { rows: events } = await sql`SELECT * FROM events WHERE date >= NOW() ORDER BY date ASC`;
+export default async function AdminPanel() {
+  const { rows: events } = await sql`SELECT * FROM events ORDER BY date ASC`;
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-6xl mx-auto">
-        <header className="mb-12 text-center">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">Agenda Conil</h1>
-          <p className="text-lg text-slate-600">Descubre los mejores eventos, fiestas y cultura en Conil.</p>
-        </header>
+    <div className="min-h-screen bg-white p-10 text-black">
+      <h1 className="text-3xl font-bold mb-8">Panel de Control: Conil.com</h1>
+      
+      <form action={createEvent} className="max-w-2xl bg-gray-50 border p-6 rounded-xl space-y-4 mb-12">
+        <h2 className="text-xl font-semibold">Publicar Nuevo Evento</h2>
+        <input name="title" placeholder="Título" className="w-full p-2 border rounded" required />
+        <input name="image_url" placeholder="URL de la imagen (jpg/png)" className="w-full p-2 border rounded" />
+        <textarea name="description" placeholder="Descripción" className="w-full p-2 border rounded" />
+        <input name="date" type="datetime-local" className="w-full p-2 border rounded" required />
+        <input name="location" placeholder="Lugar" className="w-full p-2 border rounded" required />
+        <select name="category" className="w-full p-2 border rounded">
+          <option value="Fiesta">Fiesta / DJ</option>
+          <option value="Cultura">Cultura</option>
+          <option value="Gastronomía">Gastronomía</option>
+        </select>
+        <button type="submit" className="w-full bg-black text-white p-3 rounded font-bold">Publicar Ahora</button>
+      </form>
 
-        {events.length === 0 ? (
-          <p className="text-center text-gray-500">No hay eventos programados para hoy. ¡Vuelve pronto!</p>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.map((event) => (
-              <div key={event.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow border border-gray-100">
-                
-                {/* ESTO AÑADE LA PORTADA SI EXISTE LA URL */}
-                {event.image_url && (
-                  <div className="relative h-48 w-full">
-                    <img 
-                      src={event.image_url} 
-                      alt={event.title} 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                )}
-
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded uppercase">
-                      {event.category}
-                    </span>
-                    <span className="text-sm font-medium text-slate-500">
-                      {new Date(event.date).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{event.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{event.description}</p>
-                  <div className="flex items-center text-slate-500 text-sm">
-                    <span className="mr-2">📍</span>
-                    {event.location}
-                  </div>
-                </div>
-              </div>
-            ))}
+      <div className="max-w-2xl">
+        <h2 className="text-xl font-semibold mb-4">Eventos Activos</h2>
+        {events.map((event) => (
+          <div key={event.id} className="flex justify-between p-4 border-b">
+            <span>{event.title}</span>
+            <form action={async () => { 'use server'; await deleteEvent(event.id); }}>
+              <button className="text-red-600">Eliminar</button>
+            </form>
           </div>
-        )}
+        ))}
       </div>
     </div>
   );
