@@ -8,19 +8,21 @@ export default async function AgendaPublica() {
     <div className="min-h-screen bg-white">
       {/* BANNER DINÁMICO */}
       <section className="relative h-[450px] bg-slate-900 flex items-center justify-center overflow-hidden">
-        {destacado?.image_url && <img src={destacado.image_url} className="absolute inset-0 w-full h-full object-cover opacity-50" />}
+        {destacado?.image_url && (
+          <img src={destacado.image_url} className="absolute inset-0 w-full h-full object-cover opacity-50" alt="Banner" />
+        )}
         <div className="relative z-10 text-center px-4">
           <h1 className="text-6xl font-black text-white tracking-tighter mb-2">AGENDA CONIL</h1>
-          <p className="text-blue-300 text-lg uppercase tracking-[0.3em] font-light">
-            {destacado ? destacado.title : "Vive el momento"}
+          <p className="text-blue-300 text-lg uppercase tracking-[0.3em]">
+            {destacado ? destacado.title : "Vive Conil"}
           </p>
         </div>
       </section>
 
-      {/* TARJETAS DE ACTIVIDADES */}
+      {/* TARJETAS */}
       <section className="max-w-6xl mx-auto py-16 px-6 grid md:grid-cols-3 gap-8">
         {events.map(ev => (
-          <div key={ev.id} className="rounded-2xl border bg-white overflow-hidden shadow-sm hover:shadow-xl transition-shadow">
+          <div key={ev.id} className="rounded-2xl border bg-white overflow-hidden shadow-sm">
             <img src={ev.image_url} className="h-48 w-full object-cover" />
             <div className="p-6">
               <h3 className="font-bold text-xl mb-2 text-slate-800">{ev.title}</h3>
