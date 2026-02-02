@@ -2,42 +2,30 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  // Protegemos la ruta /gestionar
   if (request.nextUrl.pathname.startsWith('/gestionar')) {
     const authHeader = request.headers.get('authorization');
 
     if (!authHeader) {
-      return new NextResponse('Autenticación requerida', {
+      return new NextResponse('Entra con admin y tu contraseña', {
         status: 401,
-        headers: { 'WWW-Authenticate': 'Basic realm="Acceso Protegido"' },
+        headers: { 'WWW-Authenticate': 'Basic realm="Acceso"' },
       });
     }
 
-    try {
-      const auth = authHeader.split(' ')[1];
-      const decoded = atob(auth).split(':'); 
-      const user = decoded[0];
-      const password = decoded[1];
+    const auth = authHeader.split(' ')[1];
+    const decoded = atob(auth).split(':');
+    const user = decoded[0];
+    const password = decoded[1];
 
-      // Compara con la variable que pusiste en el panel de Vercel
-      const ADMIN_PASS = process.env.ADMIN_PASSWORD;
-
-      if (user === 'admin' && password === ADMIN_PASS) {
-        return NextResponse.next();
-      }
-    } catch (e) {
-      return new NextResponse('Error de configuración', { status: 500 });
+    // USAMOS LA VARIABLE DE VERCEL
+    if (user === 'admin' && password === process.env.ADMIN_PASSWORD) {
+      return NextResponse.next();
     }
 
-    return new NextResponse('Acceso denegado', {
+    return new NextResponse('Datos incorrectos', {
       status: 401,
-      headers: { 'WWW-Authenticate': 'Basic realm="Acceso Protegido"' },
+      headers: { 'WWW-Authenticate': 'Basic realm="Acceso"' },
     });
   }
-
   return NextResponse.next();
 }
-
-export const config = {
-  matcher: '/gestionar/:path*',
-};
