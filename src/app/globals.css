@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0077b6;
+  /* Ocean Blue */
+  --color-secondary: #90e0ef;
+  /* Light Blue */
+  --color-accent: #caf0f8;
+  /* Pale Blue */
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* Custom Base Styles */
+body {
+  @apply bg-gray-50 text-gray-800 font-sans;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold text-gray-900;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Hover Utilities */
+.hover-lift {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+}
