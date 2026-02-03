@@ -8,7 +8,7 @@ export default async function PanelGestion() {
     <div className="min-h-screen bg-white p-8 text-black">
       <div className="max-w-4xl mx-auto border rounded-2xl shadow-sm p-8">
         <h1 className="text-3xl font-black mb-8">Panel de Gestión</h1>
-        
+
         <form action={createEvent} className="bg-gray-50 p-6 rounded-xl border mb-12 space-y-4">
           <h2 className="font-bold">Publicar Nueva Actividad</h2>
           <div className="grid grid-cols-2 gap-4">
@@ -16,6 +16,15 @@ export default async function PanelGestion() {
             <input name="image_url" placeholder="URL Imagen (JPG/PNG)" className="p-2 border rounded" />
             <input name="date" type="datetime-local" className="p-2 border rounded" required />
             <input name="location" placeholder="Lugar" className="p-2 border rounded" required />
+            <select name="category" className="p-2 border rounded bg-white" required>
+              <option value="">Selecciona Categoría...</option>
+              <option value="Musica">Música</option>
+              <option value="Gastronomia">Gastronomía</option>
+              <option value="Deporte">Deporte</option>
+              <option value="Cultura">Cultura</option>
+              <option value="Fiesta">Fiesta</option>
+              <option value="Otro">Otro</option>
+            </select>
           </div>
           <textarea name="description" placeholder="Descripción" className="w-full p-2 border rounded" />
           <button type="submit" className="w-full bg-blue-600 text-white p-3 rounded-lg font-bold">Publicar Ahora</button>
