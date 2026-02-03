@@ -13,10 +13,10 @@ export default function Button({ children, variant = 'primary', href, onClick, c
     const baseStyles = 'inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors duration-200';
 
     const variants = {
-        primary: 'bg-primary text-white hover:bg-sky-700',
-        secondary: 'bg-secondary text-primary hover:bg-sky-200',
-        outline: 'border-2 border-primary text-primary hover:bg-sky-50',
-        ghost: 'text-gray-600 hover:text-primary hover:bg-gray-100',
+        primary: 'bg-[#0077b6] text-white hover:bg-sky-700',
+        secondary: 'bg-[#90e0ef] text-[#0077b6] hover:bg-sky-200',
+        outline: 'border-2 border-[#0077b6] text-[#0077b6] hover:bg-sky-50',
+        ghost: 'text-gray-600 hover:text-[#0077b6] hover:bg-gray-100',
     };
 
     const styles = `${baseStyles} ${variants[variant]} ${className}`;
