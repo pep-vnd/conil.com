@@ -44,31 +44,39 @@ export default function Home() {
       {/* Categories Grid - Explora Conil Section */}
       <section className="relative z-20 -mt-24 mb-20 px-4">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <CategoryNavCard
-              title="Dónde Dormir"
-              subtitle="Hoteles, apartamentos y campings"
-              image="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop"
-              href="/donde-dormir"
-            />
-            <CategoryNavCard
-              title="Gastronomía"
-              subtitle="Restaurantes y chiringuitos"
-              image="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop"
-              href="/gastronomia"
-            />
-            <CategoryNavCard
-              title="Qué Hacer"
-              subtitle="Playas, surf y naturaleza"
-              image="https://images.unsplash.com/photo-1564221710304-0b37c8b9d729?q=80&w=800&auto=format&fit=crop"
-              href="/que-hacer"
-            />
-            <CategoryNavCard
-              title="Agenda"
-              subtitle="Eventos y vida nocturna"
-              image="https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?q=80&w=800&auto=format&fit=crop"
-              href="/agenda"
-            />
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:pb-0 scrollbar-hide">
+            <div className="min-w-[85vw] md:min-w-0 snap-center">
+              <CategoryNavCard
+                title="Dónde Dormir"
+                subtitle="Hoteles, apartamentos y campings"
+                image="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop"
+                href="/donde-dormir"
+              />
+            </div>
+            <div className="min-w-[85vw] md:min-w-0 snap-center">
+              <CategoryNavCard
+                title="Gastronomía"
+                subtitle="Restaurantes y chiringuitos"
+                image="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop"
+                href="/gastronomia"
+              />
+            </div>
+            <div className="min-w-[85vw] md:min-w-0 snap-center">
+              <CategoryNavCard
+                title="Qué Hacer"
+                subtitle="Playas, surf y naturaleza"
+                image="https://images.unsplash.com/photo-1564221710304-0b37c8b9d729?q=80&w=800&auto=format&fit=crop"
+                href="/que-hacer"
+              />
+            </div>
+            <div className="min-w-[85vw] md:min-w-0 snap-center">
+              <CategoryNavCard
+                title="Agenda"
+                subtitle="Eventos y vida nocturna"
+                image="https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?q=80&w=800&auto=format&fit=crop"
+                href="/agenda"
+              />
+            </div>
           </div>
         </div>
       </section>
