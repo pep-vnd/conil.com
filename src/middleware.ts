@@ -21,11 +21,20 @@ export function middleware(request: NextRequest) {
 
       const ADMIN_PASS = process.env.ADMIN_PASSWORD;
 
+      console.log('Middleware Auth Attempt:', {
+        userReceived: user,
+        passLength: password?.length,
+        adminPassDefined: !!ADMIN_PASS,
+        adminPassLength: ADMIN_PASS?.length
+      });
+
       if (user === 'admin' && password === ADMIN_PASS) {
         return NextResponse.next();
+      } else {
+        console.log('Auth Failed: Credentials do not match.');
       }
     } catch (e) {
-      console.error('Error en seguridad:', e);
+      console.error('Error en seguridad (Middleware):', e);
     }
 
     return new NextResponse('Credenciales inválidas', {
