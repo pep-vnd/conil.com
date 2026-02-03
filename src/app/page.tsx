@@ -4,14 +4,8 @@ import { experiences } from "@/data/experiences";
 import { places } from "@/data/places";
 import Button from "@/components/ui/Button";
 import Link from 'next/link';
-import { getEvents } from "@/lib/db";
 
-// Force dynamic because we are fetching real-time events for the Hero
-export const dynamic = 'force-dynamic';
-
-export default async function Home() {
-  const events = await getEvents();
-
+export default function Home() {
   const featuredPlaces = places.filter(p => p.featured).slice(0, 3);
   const featuredExperiences = experiences.slice(0, 3);
 
@@ -45,7 +39,7 @@ export default async function Home() {
 
   return (
     <div className="pb-0 bg-gray-50">
-      <Hero events={events} />
+      <Hero />
 
       {/* Categories Grid - Explora Conil Section */}
       <section className="relative z-20 -mt-24 mb-20 px-4">
