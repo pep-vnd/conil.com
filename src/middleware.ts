@@ -14,8 +14,8 @@ export function middleware(request: NextRequest) {
 
     try {
       const auth = authHeader.split(' ')[1];
-      // Usamos Buffer para decodificar, es más fiable que atob en servidores
-      const decoded = Buffer.from(auth, 'base64').toString().split(':');
+      // Usamos atob para decodificar, compatible con Edge Runtime
+      const decoded = atob(auth).split(':');
       const user = decoded[0];
       const password = decoded[1];
 
