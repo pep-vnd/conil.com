@@ -20,13 +20,7 @@ const defaultSlides = [
         subtitle: 'Playas infinitas, gastronomía única y la mejor vida nocturna.',
         link: '/que-hacer'
     },
-    {
-        id: 'default-2',
-        image: '/images/aa7a499403bc4fc8d71d0a31b3f7e1ea.jpg',
-        title: 'Gastronomía de Almadraba',
-        subtitle: 'Descubre los sabores auténticos de la costa gaditana.',
-        link: '/gastronomia'
-    }
+
 ];
 
 interface HeroProps {
