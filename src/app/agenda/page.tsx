@@ -8,7 +8,7 @@ export default async function AgendaPublica() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* BANNER PRINCIPAL CON DEGRADADO VIVO */}
-      <AgendaHero events={events} />
+      <AgendaHero events={events as any} />
 
       {/* LISTADO DE ACTIVIDADES CON TARJETAS MODERNAS */}
       <section id="eventos" className="max-w-7xl mx-auto py-20 px-6">
