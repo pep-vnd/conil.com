@@ -17,7 +17,7 @@ export function middleware(request: NextRequest) {
       // Usamos atob para decodificar, compatible con Edge Runtime
       const decoded = atob(auth).split(':');
       const user = decoded[0];
-      const password = decoded[1];
+      const password = decoded[1]?.trim(); // Quitamos espacios extra por si acaso
 
       const ADMIN_PASS = process.env.ADMIN_PASSWORD;
 
