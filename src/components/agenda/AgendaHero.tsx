@@ -92,7 +92,7 @@ export default function AgendaHero({ events = [] }: AgendaHeroProps) {
                     <Button
                         variant="primary"
                         href="#eventos"
-                        className="bg-white text-slate-900 hover:bg-gray-100 font-bold px-8 py-4 rounded-full shadow-xl hover:-translate-y-1 transition-all"
+                        className="font-bold px-8 py-4 rounded-full shadow-xl hover:-translate-y-1 transition-all"
                     >
                         Ver todos los eventos
                     </Button>
@@ -106,8 +106,8 @@ export default function AgendaHero({ events = [] }: AgendaHeroProps) {
                         key={index}
                         onClick={() => setCurrentSlide(index)}
                         className={`transition-all duration-300 rounded-full ${index === currentSlide
-                                ? 'w-8 h-2 bg-white'
-                                : 'w-2 h-2 bg-white/40 hover:bg-white/70'
+                            ? 'w-8 h-2 bg-white'
+                            : 'w-2 h-2 bg-white/40 hover:bg-white/70'
                             }`}
                         aria-label={`Ir a diapositiva ${index + 1}`}
                     />
