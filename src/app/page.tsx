@@ -87,7 +87,7 @@ export default function Home() {
             <Button variant="ghost" href="/experiencias" className="mt-4 md:mt-0">Ver todas las experiencias →</Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:pb-0 scrollbar-hide">
             {featuredExperiences.map((exp) => (
               <Card
                 key={exp.id}
@@ -96,7 +96,7 @@ export default function Home() {
                 image={exp.image}
                 href={`/experiencias/${exp.id}`}
                 label={exp.category.toUpperCase()}
-                className="hover-lift"
+                className="hover-lift min-w-[85vw] md:min-w-0 snap-center"
               />
             ))}
           </div>
@@ -117,7 +117,7 @@ export default function Home() {
             <Button variant="ghost" href="/donde-dormir" className="mt-4 md:mt-0">Ver todos los sitios →</Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:pb-0 scrollbar-hide">
             {featuredPlaces.map((place) => (
               <Card
                 key={place.id}
@@ -127,6 +127,7 @@ export default function Home() {
                 href={`/${place.categorySlug}/${place.id}`}
                 rating={place.rating}
                 label={place.type}
+                className="min-w-[85vw] md:min-w-0 snap-center"
               />
             ))}
           </div>

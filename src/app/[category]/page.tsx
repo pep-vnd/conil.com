@@ -82,7 +82,7 @@ export default async function CategoryPage({ params }: PageProps) {
             />
 
             <div className="container mx-auto px-4 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:pb-0 scrollbar-hide">
                     {items.map((item) => (
                         <Card
                             key={item.id}
@@ -92,7 +92,7 @@ export default async function CategoryPage({ params }: PageProps) {
                             href={item.href}
                             rating={item.rating}
                             label={item.label}
-                            className="hover-lift"
+                            className="hover-lift min-w-[85vw] md:min-w-0 snap-center"
                         />
                     ))}
                 </div>
