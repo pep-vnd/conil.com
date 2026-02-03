@@ -3,6 +3,12 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/gestionar')) {
+    // Permitir peticiones POST (Server Actions) sin pasar por la validación Basic Auth del Edge para evitar conflictos
+    if (request.method === 'POST') {
+      return NextResponse.next();
+    }
+
+    console.log(`[Middleware] Processing ${request.method} request to ${request.nextUrl.pathname}`);
     const authHeader = request.headers.get('authorization');
 
     if (!authHeader) {
