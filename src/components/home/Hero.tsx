@@ -90,7 +90,7 @@ export default function Hero({ events = [] }: HeroProps) {
                             <div className="flex justify-center gap-4">
                                 <Button
                                     variant="primary"
-                                    className="bg-white text-black hover:bg-gray-100 shadow-[0_0_30px_rgba(255,255,255,0.3)] px-10 py-4 rounded-full font-bold text-lg border-2 border-transparent transition-all hover:scale-105"
+                                    className="md:w-auto w-full px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:scale-105 transition-all"
                                     href="/agenda"
                                 >
                                     Ver Agenda Completa
@@ -119,7 +119,7 @@ export default function Hero({ events = [] }: HeroProps) {
                                 </div>
                                 <Button
                                     variant="primary"
-                                    className="md:w-auto w-full bg-white text-black hover:bg-gray-100 px-8 py-4 rounded-2xl font-bold uppercase tracking-wide border-none"
+                                    className="md:w-auto w-full px-8 py-4 rounded-2xl font-bold uppercase tracking-wide border-none"
                                 >
                                     Buscar
                                 </Button>
@@ -137,8 +137,8 @@ export default function Hero({ events = [] }: HeroProps) {
                         key={index}
                         onClick={() => setCurrentSlide(index)}
                         className={`transition-all duration-300 rounded-full ${index === currentSlide
-                                ? 'w-8 h-2 bg-white'
-                                : 'w-2 h-2 bg-white/40 hover:bg-white/70'
+                            ? 'w-8 h-2 bg-white'
+                            : 'w-2 h-2 bg-white/40 hover:bg-white/70'
                             }`}
                         aria-label={`Ir a diapositiva ${index + 1}`}
                     />
