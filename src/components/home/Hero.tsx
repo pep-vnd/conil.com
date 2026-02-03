@@ -9,6 +9,14 @@ const defaultSlides = [
         id: 'default-1',
         image: '/images/71146e9cc58652bef6b025f36af2b0df.jpg',
         title: 'Conil no se visita, se vive',
+        titleRender: (
+            <>
+                Conil no se visita,<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-teal-300 drop-shadow-[0_0_15px_rgba(56,189,248,0.5)]">
+                    se vive
+                </span>
+            </>
+        ),
         subtitle: 'Playas infinitas, gastronomía única y la mejor vida nocturna.',
         link: '/que-hacer'
     },
@@ -101,7 +109,7 @@ export default function Hero({ events = [] }: HeroProps) {
                         // Default Static Content
                         <>
                             <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tighter drop-shadow-2xl text-white">
-                                {defaultSlides[currentSlide].title}
+                                {(defaultSlides[currentSlide] as any).titleRender || defaultSlides[currentSlide].title}
                             </h1>
                             <p className="text-xl md:text-3xl text-gray-200 mb-12 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
                                 {defaultSlides[currentSlide].subtitle}
