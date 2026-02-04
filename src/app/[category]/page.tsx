@@ -82,7 +82,7 @@ export default async function CategoryPage({ params }: PageProps) {
             />
 
             <div className="container mx-auto px-4 py-12">
-                <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-24 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:pb-0 scrollbar-hide">
+                <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-12 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 scrollbar-hide">
                     {items.map((item) => (
                         <Card
                             key={item.id}

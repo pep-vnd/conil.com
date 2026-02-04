@@ -26,7 +26,7 @@ export default function Home() {
       </div>
 
       {/* Content Part (30%) - White Background */}
-      <div className="h-[30%] bg-white p-6 flex flex-col justify-center border-t border-gray-100 relative z-10">
+      <div className="h-[30%] bg-white p-6 flex flex-col justify-center relative z-10">
         <h3 className="font-bold text-gray-900 text-2xl mb-1 group-hover:text-primary transition-colors">{title}</h3>
         <p className="text-gray-500 text-sm font-medium">{subtitle}</p>
         {/* Small decorative arrow */}
@@ -44,7 +44,7 @@ export default function Home() {
       {/* Categories Grid - Explora Conil Section */}
       <section className="relative z-20 -mt-24 mb-20 px-4">
         <div className="container mx-auto">
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-24 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:pb-0 scrollbar-hide">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-12 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:overflow-visible md:pb-0 scrollbar-hide">
             <div className="min-w-[85vw] md:min-w-0 snap-center">
               <CategoryNavCard
                 title="Dónde Dormir"
@@ -95,7 +95,7 @@ export default function Home() {
             <Button variant="ghost" href="/experiencias" className="mt-4 md:mt-0">Ver todas las experiencias →</Button>
           </div>
 
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-24 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:pb-0 scrollbar-hide">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-12 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 scrollbar-hide">
             {featuredExperiences.map((exp) => (
               <Card
                 key={exp.id}
@@ -125,7 +125,7 @@ export default function Home() {
             <Button variant="ghost" href="/donde-dormir" className="mt-4 md:mt-0">Ver todos los sitios →</Button>
           </div>
 
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-24 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:pb-0 scrollbar-hide">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-12 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 scrollbar-hide">
             {featuredPlaces.map((place) => (
               <Card
                 key={place.id}
