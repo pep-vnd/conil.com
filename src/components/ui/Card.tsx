@@ -15,7 +15,7 @@ export default function Card({ title, description, image, href, label, rating, c
     return (
         <Link
             href={href}
-            className={`group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 ${className}`}
+            className={`group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 relative z-10 ${className}`}
         >
             <div className="relative h-64 overflow-hidden">
                 {label && (
