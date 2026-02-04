@@ -109,23 +109,7 @@ export default function Hero({ events = [] }: HeroProps) {
                                 {defaultSlides[currentSlide].subtitle}
                             </p>
 
-                            {/* Original Search Bar */}
-                            <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-xl p-3 rounded-3xl flex flex-col md:flex-row gap-3 border border-white/20 shadow-2xl mb-12">
-                                <div className="flex-1 relative">
-                                    <span className="absolute left-6 top-1/2 -translate-y-1/2 text-white/60 text-xl">🔍</span>
-                                    <input
-                                        type="text"
-                                        placeholder="Buscar..."
-                                        className="w-full bg-transparent text-white placeholder-white/60 rounded-2xl px-14 py-4 focus:outline-none font-medium"
-                                    />
-                                </div>
-                                <Button
-                                    variant="primary"
-                                    className="md:w-auto w-full px-8 py-4 rounded-2xl font-bold uppercase tracking-wide border-none"
-                                >
-                                    Buscar
-                                </Button>
-                            </div>
+
                         </>
                     )}
 

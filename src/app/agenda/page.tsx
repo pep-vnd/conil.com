@@ -59,12 +59,12 @@ export default async function AgendaPublica() {
                   <h3 className="text-2xl font-black text-slate-900 leading-tight mb-3 group-hover:text-indigo-600 transition-colors uppercase italic">
                     {ev.title}
                   </h3>
-                  <p className="text-slate-500 text-sm leading-relaxed line-clamp-2 mb-6 font-medium">
+                  <p className="text-slate-700 text-sm leading-relaxed line-clamp-2 mb-6 font-medium">
                     {ev.description}
                   </p>
 
                   <div className="mt-auto pt-6 border-t border-slate-50 flex items-center justify-between">
-                    <div className="flex items-center text-slate-400 text-xs font-bold">
+                    <div className="flex items-center text-slate-600 text-xs font-bold">
                       <span className="mr-2 text-lg text-indigo-500">📍</span> {ev.location}
                     </div>
                     <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">

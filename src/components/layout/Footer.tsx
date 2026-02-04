@@ -62,9 +62,9 @@ export default function Footer() {
                 <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm">
                     <p>© {new Date().getFullYear()} Conil.com. Todos los derechos reservados.</p>
                     <div className="flex space-x-6 mt-4 md:mt-0">
-                        <Link href="#" className="hover:text-white">Aviso Legal</Link>
-                        <Link href="#" className="hover:text-white">Privacidad</Link>
-                        <Link href="#" className="hover:text-white">Cookies</Link>
+                        <Link href="/aviso-legal" className="hover:text-white">Aviso Legal</Link>
+                        <Link href="/privacidad" className="hover:text-white">Privacidad</Link>
+                        <Link href="/cookies" className="hover:text-white">Cookies</Link>
                     </div>
                 </div>
             </div>

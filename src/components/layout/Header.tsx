@@ -29,12 +29,7 @@ export default function Header() {
                             {category.name}
                         </Link>
                     ))}
-                    <Link
-                        href="/agenda"
-                        className="text-gray-600 hover:text-primary font-bold text-sm uppercase tracking-wide transition-colors"
-                    >
-                        Agenda
-                    </Link>
+
                     <Link
                         href="/empresas"
                         className="bg-primary text-white px-5 py-2 rounded-full font-bold text-sm hover:bg-sky-700 transition-all shadow-md hover:shadow-lg"
@@ -76,13 +71,7 @@ export default function Header() {
                                 {category.name}
                             </Link>
                         ))}
-                        <Link
-                            href="/agenda"
-                            className="text-2xl font-black text-gray-800 hover:text-primary transition-colors py-2 border-b border-gray-100"
-                            onClick={closeMenu}
-                        >
-                            Agenda
-                        </Link>
+
 
                         <div className="pt-8 w-full">
                             <Link

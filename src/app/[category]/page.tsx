@@ -74,7 +74,7 @@ export default async function CategoryPage({ params }: PageProps) {
     }
 
     return (
-        <div className="pb-20">
+        <div className="pb-10">
             <PageHeader
                 title={title}
                 subtitle={`Descubre las mejores opciones de ${title.toLowerCase()} en Conil.`}
