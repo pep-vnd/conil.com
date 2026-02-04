@@ -11,7 +11,7 @@ export default async function AgendaPublica() {
       <AgendaHero events={events as any} />
 
       {/* LISTADO DE ACTIVIDADES CON TARJETAS MODERNAS */}
-      <section id="eventos" className="max-w-7xl mx-auto py-20 px-6">
+      <section id="eventos" className="max-w-7xl mx-auto pt-20 pb-32 px-6">
         <div className="flex items-center justify-between mb-12">
           <h2 className="text-4xl font-black text-slate-900 italic uppercase">
             Próximas <span className="text-indigo-600 underline decoration-yellow-400">Citas</span>
