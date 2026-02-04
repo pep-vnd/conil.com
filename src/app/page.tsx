@@ -44,8 +44,7 @@ export default function Home() {
       {/* Categories Grid - Explora Conil Section */}
       <section className="relative z-20 -mt-24 mb-20 px-4">
         <div className="container mx-auto relative">
-          {/* Visual Patch for Hero/Body Seam */}
-          <div className="absolute top-20 left-0 w-full h-8 bg-slate-900 -z-10 hidden md:block" />
+
 
           <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-12 -mx-4 px-4 md:mx-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:overflow-visible md:pb-0 scrollbar-hide relative z-10">
             <div className="min-w-[85vw] md:min-w-0 snap-center relative z-20">
