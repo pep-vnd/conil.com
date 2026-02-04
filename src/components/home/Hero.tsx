@@ -116,20 +116,7 @@ export default function Hero({ events = [] }: HeroProps) {
                 </div>
             </div>
 
-            {/* Slider Indicators */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
-                {slides.map((_: any, index: number) => (
-                    <button
-                        key={index}
-                        onClick={() => setCurrentSlide(index)}
-                        className={`transition-all duration-300 rounded-full ${index === currentSlide
-                            ? 'w-8 h-2 bg-white'
-                            : 'w-2 h-2 bg-white/40 hover:bg-white/70'
-                            }`}
-                        aria-label={`Ir a diapositiva ${index + 1}`}
-                    />
-                ))}
-            </div>
+
         </div>
     );
 }
